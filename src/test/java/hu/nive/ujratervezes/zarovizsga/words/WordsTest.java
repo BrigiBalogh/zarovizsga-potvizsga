@@ -2,8 +2,8 @@ package hu.nive.ujratervezes.zarovizsga.words;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*
-
+import static org.junit.jupiter.api.Assertions.*;
+/*
 public class WordsTest {
 
 
@@ -17,4 +17,6 @@ public class WordsTest {
         assertFalse(words.hasMoreDigits(""));
         assertFalse(words.hasMoreDigits("1a"));
     }
-}
+
+
+ */
