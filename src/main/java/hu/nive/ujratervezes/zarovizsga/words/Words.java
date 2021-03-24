@@ -1,5 +1,5 @@
 package hu.nive.ujratervezes.zarovizsga.words;
-/*
+
 public class Words {
 
 
@@ -15,15 +15,14 @@ public class Words {
             }else {
                 charCount++;
             }
-            if (s.length() == 1 && c >= '1' && c <= '9' || digitCount > charCount) {
-                return true;
-            }
-            if (s.isEmpty() || digitCount == charCount) {
-                return false;
-            }
+        }
 
+        // return digitCount > charCount;
+        if (digitCount > charCount) {
+            return true;
+        } else {
+            return false;
         }
 
     }
 }
-*/

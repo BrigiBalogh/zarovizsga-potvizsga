@@ -6,8 +6,6 @@ import java.io.IOException;
 
 public class People {
 
-    private String Male;
-
     public int getNumberOfMales(String path) {
         int count =0;
 
@@ -15,17 +13,15 @@ public class People {
 
             String line;
             while ((line = reader.readLine() )!= null) {
-                String[] linePart = line.split(",");
+                String[] linePart = line.split("\t");
                 String gender = linePart[4].toUpperCase();
-                if(gender.equals(Male)){
+                if(gender.equals("MALE")){
                     count++;
                 }
-                return count;
             }
-
+            return count;
         }catch (IOException ioe) {
             throw new IllegalStateException("Cannot read file !", ioe);
         }
-        return count;
     }
 }

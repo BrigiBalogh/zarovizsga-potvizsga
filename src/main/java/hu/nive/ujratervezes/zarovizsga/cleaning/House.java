@@ -2,7 +2,7 @@ package hu.nive.ujratervezes.zarovizsga.cleaning;
 
 public class House  implements Cleanable {
 
-    private static int PRICE_PER_SURFACE = 80;
+    private static final int PRICE_PER_SURFACE = 80;
     private String address;
     private int surface;
 
@@ -13,7 +13,7 @@ public class House  implements Cleanable {
 
     @Override
     public int clean() {
-        return surface *= PRICE_PER_SURFACE;
+        return surface * PRICE_PER_SURFACE;
     }
 
     @Override

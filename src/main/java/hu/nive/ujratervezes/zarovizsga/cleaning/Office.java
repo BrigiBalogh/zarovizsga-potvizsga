@@ -2,7 +2,7 @@ package hu.nive.ujratervezes.zarovizsga.cleaning;
 
 public class Office implements Cleanable {
 
-    private static int PRICE_PER_SURFACE = 100;
+    private static final int PRICE_PER_SURFACE = 100;
     private String address;
     private int surface;
     private int story;
@@ -15,7 +15,7 @@ public class Office implements Cleanable {
 
     @Override
     public int clean() {
-        return surface  *= PRICE_PER_SURFACE * story;
+        return surface  * PRICE_PER_SURFACE * story;
     }
 
     @Override
