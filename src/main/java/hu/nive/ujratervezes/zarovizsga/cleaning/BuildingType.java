@@ -1,6 +1,7 @@
 package hu.nive.ujratervezes.zarovizsga.cleaning;
 
-public enum CleanableType {
+public enum BuildingType {
 
     HOUSE, OFFICE
+
 }

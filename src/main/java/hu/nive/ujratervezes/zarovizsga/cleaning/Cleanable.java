@@ -8,4 +8,6 @@ public interface Cleanable {
 
     String getAddress();
 
+    BuildingType getType();
+
 }

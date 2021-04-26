@@ -2,6 +2,7 @@ package hu.nive.ujratervezes.zarovizsga.cleaning;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Iterator;
 import java.util.List;
 
 public class CleaningService {
@@ -9,13 +10,12 @@ public class CleaningService {
     List<Cleanable> cleanables = new ArrayList<>();
 
 
-
     public void add(Cleanable cleanable) {
         cleanables.add(cleanable);
     }
 
     public List<Cleanable> getCleanables() {
-        return cleanables;
+        return new ArrayList<>(cleanables);
     }
 
     public int cleanAll() {
@@ -25,42 +25,54 @@ public class CleaningService {
             sum += cleanablePrice;
         }
         cleanables.clear();
-            return sum;
+        return sum;
     }
 
     public int cleanOnlyOffices() {
         int sum = 0;
-        List<Cleanable> cleanedOffices = new ArrayList<>();
+        Iterator<Cleanable> i = cleanables.iterator();
+        while(i.hasNext()) {
+            Cleanable cleanable = i.next();
+            if (cleanable.getType() ==BuildingType.OFFICE) {
+                sum += cleanable.clean();
+                i.remove();
+            }
+            return sum;
+        }
+ /*       List<Cleanable> cleanedOffices = new ArrayList<>();
         for (Cleanable cleanable : cleanables) {
-            if ( cleanable instanceof Office) {
+            if (cleanable instanceof Office) {
 //                Office office = (Office)cleanable;
                 int officePrice = cleanable.clean();
                 sum += officePrice;
                 cleanedOffices.add(cleanable);
             }
         }
-        cleanables.removeAll(cleanedOffices);
+        cleanables.removeAll(cleanedOffices);*/
         return sum;
     }
 
     public List<Cleanable> findByAddressPart(String address) {
         List<Cleanable> ret = new ArrayList<>();
         for (Cleanable cleanable : cleanables) {
-            if(cleanable.getAddress().contains(address)) {
+            if (cleanable.getAddress().contains(address)) {
                 ret.add(cleanable);
             }
         }
-    return ret;
+        return ret;
     }
 
     public String getAddresses() {
-        String sum = "";
-        for (Cleanable cleanable : cleanables) {
-           String address= cleanable.getAddress();
-           sum += address + ", ";
+        if (cleanables.size() == 0) {
+            return "";
         }
-        sum = sum.substring(0,sum.length()-2);
-        return sum;
+        String result;
+        StringBuilder sb = new StringBuilder();
+        for (Cleanable cleanable : cleanables) {
+            sb.append(cleanable.getAddress() + ", ");
+        }
+        result = sb.substring(0, sb.length() - 2);
+        return result.toString();
     }
 
 }

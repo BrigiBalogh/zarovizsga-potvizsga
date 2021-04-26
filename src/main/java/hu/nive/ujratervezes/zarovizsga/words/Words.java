@@ -16,13 +16,10 @@ public class Words {
                 charCount++;
             }
         }
-
-        // return digitCount > charCount;
         if (digitCount > charCount) {
             return true;
         } else {
             return false;
         }
-
     }
 }

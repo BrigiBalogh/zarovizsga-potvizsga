@@ -12,6 +12,7 @@ public class People {
         try(BufferedReader reader = new BufferedReader(new FileReader(path))) {
 
             String line;
+            reader.readLine();
             while ((line = reader.readLine() )!= null) {
                 String[] linePart = line.split("\t");
                 String gender = linePart[4].toUpperCase();
